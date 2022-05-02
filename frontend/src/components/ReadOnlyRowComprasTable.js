@@ -5,8 +5,7 @@ import ActionButtonsTable from "./ActionButtonsTable";
 
 const ReadOnlyRow = (props) => {
 
-  
-  
+  console.log(props)
    const  remove = (e,produto)=>{
      props.handleDeleteClick(e,produto)
    }
@@ -27,7 +26,7 @@ const ReadOnlyRow = (props) => {
         <ActionButtonsTable
             textEdit="Editar"
             textDeletar="Deletar"
-            deletar={(event) =>remove(event,props.compra)}
+            deletar={(event) =>remove(event,props.produto)}
         />
       </td>
     </tr>

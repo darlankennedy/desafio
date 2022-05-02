@@ -4,7 +4,7 @@ import { Table } from 'react-bootstrap'
 import ReadOnlyRowCompras from "../components/ReadOnlyRowCompras";
 
 export default props => {
-    
+ 
     return (
         <div className="mt-3">
             <Cards
@@ -27,7 +27,6 @@ export default props => {
                               <ReadOnlyRowCompras
                                     compra={compra}
                                     handleDeleteClick={props.handleDeleteClick}
-                                    handleEditClick={props.handleEditClick}
                                 />
                             </Fragment>
                         ))}

@@ -41,16 +41,14 @@ export default class Produtos extends Component {
 
     async handleAddProdutos() {
         this.setState({ loading: true });
-
-      
-        var formatter = parseFloat(this.state.preco.replace(',', '.'));
-        
         const objeto = {
             id:this.state.id,
             nome: this.state.nome,
             descricao: this.state.descricao,
-            preco: formatter
+            preco: parseFloat(this.state.preco)
         }
+
+
         
         if(this.state.editar){
             const resultado = await api.put(`/produtos/${this.state.id}`, objeto)
@@ -73,6 +71,7 @@ export default class Produtos extends Component {
         }
         
         this.setState({ loading: false });
+        this.clear()
        
     }
     handleEditClick(event,produto){

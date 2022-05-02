@@ -1,15 +1,15 @@
 import React, { Fragment } from "react";
 import Cards from "../components/Cards";
 import { Table } from 'react-bootstrap'
-import ReadOnlyRow from "../components/ReadOnlyRow";
+import ReadOnlyRow from "../components/ReadOnlyRowComprasProdutos";
 
 export default props => {
 
-    
-    console.log(props)
+    const removerTable =(e,produto,index) => {
+        
+        props.handleDeleteClick(produto,index)
 
-    const removerTable =() => {
-        props.handleDeleteClick()
+
     }
     return (
         <div className="mt-3">
@@ -33,8 +33,7 @@ export default props => {
                                 <ReadOnlyRow
                                     index={index}
                                     produto={produto}
-                                    handleDeleteClick={props.handleDeleteClick}
-                                    handleEditClick={props.handleEditClick}
+                                    handleDeleteClick={evet => removerTable(evet,produto,index)}
                                 />
                             </Fragment>
                         ))}

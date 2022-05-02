@@ -12,6 +12,7 @@ const ReadOnlyRow = (props) => {
 
 
     const edit = (e,produto) =>{
+      
         props.handleEditClick(e,produto)
     }
     

@@ -34,6 +34,9 @@ module.exports = app => {
 
     app.route('/comprasItems')
        .get(compras.getAllCompraProdutos)    
+
+    app.route('/fecharCompra')
+        .post(compras.fecharCompra)  
     
 
 }

@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import ActionButtonsTable from "./ActionButtonsTable";
 
 const ReadOnlyRow = (props) => {
-
-  
   
    const  remove = (e,produto)=>{
      props.handleDeleteClick(e,produto)
@@ -19,15 +17,15 @@ const ReadOnlyRow = (props) => {
     
   return (
     <tr key={props.id}>
-       <td className="text-center">{props.compra.id}</td>
-       <td className="text-center">{props.compra.status}</td>
-       <td className="text-center">{props.compra.tipo_pagamento}</td>
-       <td className="text-center">R$ {props.compra.total}</td>
+       <td className="text-center">{props.produto.id}</td>
+       <td className="text-center">{props.produto.nome}</td>
+       <td className="text-center">{props.produto.descricao}</td>
+       <td className="text-center">R$ {props.produto.preco}</td>
        <td className="text-center">
         <ActionButtonsTable
             textEdit="Editar"
             textDeletar="Deletar"
-            deletar={(event) =>remove(event,props.compra)}
+            deletar={(event) =>remove(event,props.produto)}
         />
       </td>
     </tr>

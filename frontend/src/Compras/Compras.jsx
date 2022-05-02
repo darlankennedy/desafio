@@ -16,7 +16,6 @@ export default class Compras extends Component {
             id: '',
             list: [],
             loading: false,
-           
             cardTitle: 'Cadastrar Produtos',
             labelBtnSalvarEditar: 'Cadastrar'
         }
@@ -24,6 +23,7 @@ export default class Compras extends Component {
 
         this.handlePageChange = this.handlePageChange.bind(this);
         this.hundleNavete = this.hundleNavete.bind(this)
+        this.handleDeleteClick = this.handleDeleteClick.bind(this)
         this.refrash()
     }
 
@@ -32,6 +32,19 @@ export default class Compras extends Component {
     navigate(path)
     
    }
+   handleDeleteClick(event,compra){
+
+    console.log(compra.id)
+    
+    api.delete(`/compras/${compra.id}`)
+    .then(data=>{
+        handleSuccessmsg(data.data.msg)
+        this.refrash()
+    }).catch((erro)=>{
+        handleError()
+    })
+
+}
    handlePageChange() {
     window.location = "/realizarCompras";
   }
@@ -70,6 +83,7 @@ export default class Compras extends Component {
 
                 <ComprasList
                     compras={this.state.list}
+                    handleDeleteClick={this.handleDeleteClick}
                 />
             </div>
         )

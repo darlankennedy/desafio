@@ -12,12 +12,17 @@ export default props =>{
     }
     return(
         <div>
-        <Button
+        {
+          props.editar == undefined ? '': (
+          <Button
           variant="success"
           onClick={(event) => editar(event)}
         >
          <span><i className={'fa fa-edit'}>{' '}</i>{props.textEdit}</span>
-        </Button>{' '}
+        </Button>
+          )
+        }
+      
         <Button  
           variant="danger"
           onClick={(event) => deletar(event)}
