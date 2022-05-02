@@ -4,7 +4,7 @@ import { Table } from 'react-bootstrap'
 import ReadOnlyRowCompras from "../components/ReadOnlyRowCompras";
 
 export default props => {
-    console.log(props)
+    
     return (
         <div className="mt-3">
             <Cards

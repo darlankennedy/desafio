@@ -42,39 +42,43 @@ export default class Produtos extends Component {
     async handleAddProdutos() {
         this.setState({ loading: true });
 
+      
         var formatter = parseFloat(this.state.preco.replace(',', '.'));
-        console.log(formatter)
+        
         const objeto = {
             id:this.state.id,
             nome: this.state.nome,
             descricao: this.state.descricao,
             preco: formatter
         }
+        
         if(this.state.editar){
             const resultado = await api.put(`/produtos/${this.state.id}`, objeto)
             .then((data)=>{
                 handleSuccessmsg(data.data.msg)
+                this.clear()      
                 this.refrash()
             }).catch((erro)=>{
                 handleError(erro.response.data.msg)
             })
+           
         }else{
             const resultado = await api.post(`/produtos`, objeto)
             .then((data)=>{
-                handleSuccessmsg(data.data.msg)
                 this.refrash()
+                handleSuccessmsg(data.data.msg)
             }).catch((erro)=>{
                 handleError(erro.response.data.msg)
             })
         }
-         
+        
         this.setState({ loading: false });
-        this.clear()
+       
     }
     handleEditClick(event,produto){
         event.preventDefault();
         const id_produtoVelho = produto.id
-
+        
         this.setState({
             nome: produto.nome,
             id:id_produtoVelho,
@@ -83,12 +87,13 @@ export default class Produtos extends Component {
             editar:true,
             cardTitle:'Atualizar Produtos',
             labelBtnSalvarEditar:'Atualizar'
-        })
+        });
+
+
+
     }
     handleDeleteClick(event,produto){
         event.preventDefault();
-
-
         api.delete(`/produtos/${produto.id}`)
         .then(data=>{
             handleSuccessmsg(data.data.msg)
@@ -103,6 +108,7 @@ export default class Produtos extends Component {
         api.get('/produtos')
         .then(data=>{
             this.setState({
+                ...this.state,
                 list: data.data.produtos 
             })
         }).catch((erro)=>{

@@ -6,11 +6,11 @@ import ActionButtonsTable from "./ActionButtonsTable";
 const ReadOnlyRow = (props) => {
 
 
-  const [preco,setPreco] = useState(props.produto.preco)
    const  remove = (e,produto)=>{
      props.handleDeleteClick(e,produto)
    }
-   var formatter = new Intl.NumberFormat('pt-br', { minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+
     const edit = (e,produto) =>{
         props.handleEditClick(e,produto)
     }
@@ -20,7 +20,7 @@ const ReadOnlyRow = (props) => {
        <td className="text-center">{props.produto.id}</td>
        <td className="text-center">{props.produto.nome}</td>
        <td className="text-center">{props.produto.descricao}</td>
-       <td className="text-center">R$ {formatter.format(parseFloat(preco))}</td>
+       <td className="text-center">R$ {props.produto.preco}</td>
        <td className="text-center">
         <ActionButtonsTable
             textEdit="Editar"
