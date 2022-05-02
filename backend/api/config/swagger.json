@@ -1,0 +1,415 @@
+{
+   "openapi":"3.0.0",
+   "info":{
+       "title":"projeto de desafio react by Grupo ICTS",
+       "description":"Este projeto é para realiação do processo seletivo da Empresa",
+       "termsOfService":"https://www.linkedin.com/in/darlan-kennedy-dos-santos-95341a191/",
+       "contact":{
+        "name":"Darlan kennedy Oliveira Dos Santos",
+        "email":"darlankennedy2@gmail.com"
+       },
+       "version":"1.0.0"
+   },
+   "servers": [
+    {
+      "url": "http://localhost:3002",
+      "description": "teste",
+      "variables":[
+          {
+            "default":"http://localhost:3002"
+          }
+      ]
+    }
+  ],
+  "paths":{
+      "/produtos":{
+          "post":{
+              "summary":"cadastro de produtos",
+              "description":"cadastro de produtos",
+              "tags":["Produtos"],
+              "requestBody":{
+                  "description":"corpo do form",
+                  "content": {
+                    "application/json":{
+                          "schema":{
+                               "$ref":"#/components/schemas/produto"
+                          },
+                          "examples":{
+                              "produto":{
+                                  "value":{
+                                      "nome":"Tv plasma",
+                                      "descricao":"tv plasma gigante",
+                                      "preco":100
+                                  }
+                              }
+                          }
+
+                      }
+                  }
+              },
+            "responses":{
+                "200":{
+                    "description":"cadastrado com sucesso!!!",
+                    "content":{
+                      "application/json":{
+                          "schema":{
+                               "$ref":"#/components/schemas/produto"
+                          }
+  
+                      }
+                    }
+                    
+                }
+            }
+          },
+          "get":{
+            "summary":"Lista de Produtos",
+            "description":"Listar Todos os Produtos",
+            "tags":["Produtos"],
+            "responses":{
+                "200":{
+                    "description":"cadastrado com sucesso!!!",
+                    "content":{
+                      "application/json":{
+                          "schema":{
+                               "$ref":"#/components/schemas/produto"
+                          }
+  
+                      }
+                    }
+                    
+                }
+            }
+
+          } 
+      },
+      "/produtos/{id}":{
+        "put":{
+            "summary":"Alteração de produtos",
+            "description":"Alteração de produtos",
+            "tags":["Produtos"],
+            "parameters":[
+                {
+                    "name":"id",
+                    "in":"path",
+                    "description":"Id do Produto",
+                    "required": true
+                }
+            ],
+            "requestBody":{
+                "description":"corpo do form",
+                "content": {
+                  "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/produto"
+                        },
+                        "examples":{
+                            "produto":{
+                                "value":{
+                                    "nome":"Tv plasma",
+                                    "descricao":"tv plasma gigante",
+                                    "preco":100
+                                }
+                            }
+                        }
+
+                    }
+                }
+            },
+          "responses":{
+              "200":{
+                  "description":"Alteração com sucesso!!!",
+                  "content":{
+                    "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/produto"
+                        }
+
+                    }
+                  }
+                  
+              }
+          }
+        },
+        "get":{
+          "summary":"Buscar Produto",
+          "description":"Buscar Produto",
+          "tags":["Produtos"],
+          "parameters":[
+              {
+                  "name":"id",
+                  "in":"path",
+                  "description":"Id do Produto",
+                  "required": true
+              }
+          ],
+          "responses":{
+              "200":{
+                  "description":"Encontrado com sucesso!!!",
+                  "content":{
+                    "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/produto"
+                        }
+
+                    }
+                  }
+                  
+              }
+          }
+
+        },
+        "delete":{
+            "summary":"Deletar Produto",
+            "description":"Deletar Produto",
+            "tags":["Produtos"],
+            "parameters":[
+                {
+                    "name":"id",
+                    "in":"path",
+                    "description":"Id do Produto",
+                    "required": true
+                }
+            ],
+            "responses":{
+                "200":{
+                    "description":"Deletado com sucesso!!!",
+                    "content":{
+                      "application/json":{
+                          "schema":{
+                               "$ref":"#/components/schemas/produto"
+                          }
+  
+                      }
+                    }
+                    
+                }
+            }
+        }
+      },
+      "/compras":{
+        "post":{
+            "summary":"cadastro de Compras",
+            "description":"cadastro de Compras",
+            "tags":["Compras"],
+            "requestBody":{
+                "description":"corpo do form",
+                "content": {
+                  "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/compra"
+                        },
+                        "examples":{
+                            "compra":{
+                                "value":{
+                                    "total":30.6,
+                                    "tipoPagamento":"tv plasma gigante",
+                                    "status":"pago"
+                                }
+                            }
+                        }
+
+                    }
+                }
+            },
+          "responses":{
+              "200":{
+                  "description":"cadastrado com sucesso!!!",
+                  "content":{
+                    "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/compra"
+                        }
+
+                    }
+                  }
+                  
+              }
+          }
+        },
+        "get":{
+          "summary":"Lista de Compras",
+          "description":"Listar Todas os Compras",
+          "tags":["Compras"],
+          "responses":{
+              "200":{
+                  "description":"Listado com sucesso!!!",
+                  "content":{
+                    "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/compra"
+                        }
+
+                    }
+                  }
+                  
+              }
+          }
+
+        } 
+    },
+    "/compras/{id}":{
+      "put":{
+          "summary":"Alteração de Compras",
+          "description":"Alteração de Compras",
+          "tags":["Compras"],
+          "parameters":[
+              {
+                  "name":"id",
+                  "in":"path",
+                  "description":"Id da Compra",
+                  "required": true
+              }
+          ],
+          "requestBody":{
+              "description":"corpo do form",
+              "content": {
+                "application/json":{
+                      "schema":{
+                        "$ref":"#/components/schemas/compra"
+                      },
+                      "examples":{
+                        "compra":{
+                            "value":{
+                                "total":30.6,
+                                "tipoPagamento":"pix",
+                                "status":"pago"
+                            }
+                        }
+                    }
+                  }
+              }
+          },
+        "responses":{
+            "200":{
+                "description":"Alteração com sucesso!!!",
+                "content":{
+                  "application/json":{
+                      "schema":{
+                           "$ref":"#/components/schemas/compra"
+                      }
+                  }
+                }
+            },
+            "400":{
+                "description":"Falha na Operação!!",
+                "content":{
+                    "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/compra"
+                        }
+                    }
+                  }
+            }
+        }
+      },
+      "get":{
+        "summary":"Buscar Compra",
+        "description":"Buscar Compra",
+        "tags":["Compras"],
+        "parameters":[
+            {
+                "name":"id",
+                "in":"path",
+                "description":"Id do Produto",
+                "required": true
+            }
+        ],
+        "responses":{
+            "200":{
+                "description":"Encontrado com sucesso!!!",
+                "content":{
+                  "application/json":{
+                      "schema":{
+                           "$ref":"#/components/schemas/compra"
+                      }
+
+                  }
+                }
+                
+            }
+        }
+
+      },
+      "delete":{
+          "summary":"Deletar Produto",
+          "description":"Deletar Produto",
+          "tags":["Compras"],
+          "parameters":[
+              {
+                  "name":"id",
+                  "in":"path",
+                  "description":"Id do Compra",
+                  "required": true
+              }
+          ],
+          "responses":{
+              "200":{
+                  "description":"Deletado com sucesso!!!",
+                  "content":{
+                    "application/json":{
+                        "schema":{
+                             "$ref":"#/components/schemas/compra"
+                        }
+
+                    }
+                  }
+                  
+              }
+          }
+      }
+    }
+      
+  },
+  "components":{
+      "schemas":{
+          "produto":{
+              "type":"object",
+              "properties":{
+                  "id":{
+                    "type:":"string"
+                  },
+                  "nome:":{
+                      "type:":"string"
+                  },
+                  "descricao:":{
+                    "type:":"string"
+                },
+                "price:":{
+                    "type:":"double"
+                },
+                "data_criacao:":{
+                    "type:":"string"
+                },
+                "data_atualizacao:":{
+                    "type:":"string"
+                }
+              }
+          },
+          "compra":{
+            "type":"object",
+            "properties":{
+                "id":{
+                  "type:":"string"
+                },
+                "total:":{
+                    "type:":"number"
+                },
+                "tipo_pagamento:":{
+                  "type:":"string"
+              },
+              "status:":{
+                  "type:":"string"
+              },
+              "data_criacao:":{
+                  "type:":"string"
+              },
+              "data_atualizacao:":{
+                  "type:":"string"
+              }
+            }
+        }
+      }
+  }
+  
+}
